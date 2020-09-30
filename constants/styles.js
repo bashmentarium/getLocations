@@ -7,4 +7,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  defaultButton: {
+    width: '90%',
+    height: 50,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
 })
