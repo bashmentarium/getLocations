@@ -17,6 +17,12 @@ import PlaceDetail from './screens/PlaceDetail'
 import NewPlace from './screens/NewPlace'
 import MapScreen from './screens/MapScreen'
 
+import TabBarIcon from './components/TabBarIcon'
+import NavigationService from './utils/navigationService'
+import store from './store'
+
+import colors from './constants/colors'
+
 const details = require(`./assets/images/png/details.png`)
 const map = require(`./assets/images/png/map.png`)
 const places = require(`./assets/images/png/places.png`)
@@ -25,12 +31,6 @@ const details_focused = require(`./assets/images/png/details_focused.png`)
 const map_focused = require(`./assets/images/png/map_focused.png`)
 const places_focused = require(`./assets/images/png/places_focused.png`)
 const plus_focused = require(`./assets/images/png/plus_focused.png`)
-
-import TabBarIcon from './components/TabBarIcon'
-import NavigationService from './utils/navigationService'
-import store from './store'
-
-import colors from './constants/colors'
 
 i18n.translations = {
   en: getLocaleMessages('en'),
@@ -46,7 +46,7 @@ export const switchNavigator = createSwitchNavigator({
     },
     {
       defaultNavigationOptions: {
-        headerShown: true,
+        headerShown: false,
       },
     }
   ),
@@ -63,6 +63,10 @@ export const switchNavigator = createSwitchNavigator({
             headerTitleStyle: {
               flex: 1,
               textAlign: 'center',
+            },
+            headerStyle: {
+              backgroundColor: colors.background,
+              borderBottomColor: colors.background,
             },
           },
           navigationOptions: {
@@ -82,10 +86,14 @@ export const switchNavigator = createSwitchNavigator({
         {
           initialRouteName: 'Detail',
           defaultNavigationOptions: {
-            headerTitle: 'Place details',
+            headerTitle: 'Place detail',
             headerTitleStyle: {
               flex: 1,
               textAlign: 'center',
+            },
+            headerStyle: {
+              backgroundColor: colors.background,
+              borderBottomColor: 'transparent',
             },
           },
           navigationOptions: {
@@ -110,6 +118,10 @@ export const switchNavigator = createSwitchNavigator({
               flex: 1,
               textAlign: 'center',
             },
+            headerStyle: {
+              backgroundColor: colors.background,
+              borderBottomColor: 'transparent',
+            },
           },
           navigationOptions: {
             tabBarIcon: ({focused}) => (
@@ -130,6 +142,10 @@ export const switchNavigator = createSwitchNavigator({
               flex: 1,
               textAlign: 'center',
             },
+            headerStyle: {
+              backgroundColor: colors.background,
+              borderBottomColor: colors.background,
+            },
           },
           navigationOptions: {
             tabBarIcon: ({focused}) => (
@@ -143,16 +159,17 @@ export const switchNavigator = createSwitchNavigator({
       initialRouteName: 'Places',
       tabBarOptions: {
         style: {
-          backgroundColor: colors.white,
+          backgroundColor: colors.background,
           height: 60,
+          borderTopColor: 'transparent',
         },
         labelStyle: {
           fontFamily: 'light',
-          fontSize: 12,
+          fontSize: 13,
         },
         activeTintColor: colors.black,
         inactiveTintColor: colors.borderColor,
-        keyboardHidesTabBar: true,
+        keyboardHidesTabBar: false,
       },
     }
   ),
