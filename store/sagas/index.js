@@ -1,7 +1,7 @@
 import {fork, all} from 'redux-saga/effects'
-// import { saga as loginSaga } from "../../ducks/login";
+import {saga as placesSaga} from '../../ducks/places'
 
 export default function* root() {
-  const sagas = []
+  const sagas = [...placesSaga]
   yield all([...sagas].map((saga) => fork(saga)))
 }
