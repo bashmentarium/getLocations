@@ -5,4 +5,5 @@ export default {
   background: '#FBFDFF',
   lightgray: 'lightgray',
   constrast: '#333333',
+  primary: '#fc9208',
 }
