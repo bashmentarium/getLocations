@@ -1,12 +1,54 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native'
+import {useSelector} from 'react-redux'
+const logo = require('../assets/images/png/logo.png')
 
-const PlacesList = () => {
+import PlaceItem from '../components/PlaceItem'
+
+import styles from '../constants/styles'
+import colors from '../constants/colors'
+
+const PlacesList = ({navigation}) => {
+  const places = useSelector((state) => state.places.places)
+
   return (
-    <View>
-      <Text>PlacesListScreen</Text>
+    <View style={styles.container}>
+      <ScrollView>
+        {places.map(({title, id}) => {
+          return (
+            <PlaceItem
+              title={title}
+              image={null}
+              address={null}
+              onSelect={() => {
+                navigation.navigate('Detail', {
+                  placeTitle: title,
+                  placeId: id,
+                })
+              }}
+            />
+          )
+        })}
+      </ScrollView>
     </View>
   )
 }
+
+PlacesList.navigationOptions = ({navigation}) => ({
+  headerTitleStyle: {
+    fontFamily: 'regular',
+    fontSize: 19,
+  },
+  headerStyle: {
+    backgroundColor: colors.background,
+    borderBottomColor: 'transparent',
+  },
+  headerRight: () => (
+    <TouchableOpacity style={{width: 50}}>
+      <Image source={logo} />
+    </TouchableOpacity>
+  ),
+  headerBackTitle: null,
+})
 
 export default PlacesList
