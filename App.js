@@ -86,7 +86,6 @@ export const switchNavigator = createSwitchNavigator({
         {
           initialRouteName: 'Detail',
           defaultNavigationOptions: {
-            headerTitle: 'Place detail',
             headerTitleStyle: {
               flex: 1,
               textAlign: 'center',
