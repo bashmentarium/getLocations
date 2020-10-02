@@ -30,6 +30,10 @@ export default StyleSheet.create({
     fontSize: 16,
     fontFamily: 'bold',
   },
+  buttonTextLight: {
+    fontSize: 15,
+    fontFamily: 'regular',
+  },
   labelWrapper: {
     position: 'relative',
   },
@@ -187,5 +191,16 @@ export default StyleSheet.create({
   imagePreview: {
     width: '90%',
     height: '60%',
+  },
+  locationPicker: {
+    marginBottom: 15,
+  },
+  mapPreview: {
+    marginBottom: 10,
+    height: 150,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })

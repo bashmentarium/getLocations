@@ -44,7 +44,7 @@ const ImagePicker = ({onImageTaken}) => {
   return (
     <View style={styles.imagePicker}>
       {!pickedImage ? (
-        <Text>No image picked yet</Text>
+        <Text style={styles.address}>No image picked yet</Text>
       ) : (
         <Image source={{uri: pickedImage}} style={styles.imagePreview} />
       )}
