@@ -168,7 +168,7 @@ export const switchNavigator = createSwitchNavigator({
         },
         activeTintColor: colors.black,
         inactiveTintColor: colors.borderColor,
-        keyboardHidesTabBar: false,
+        keyboardHidesTabBar: true,
       },
     }
   ),

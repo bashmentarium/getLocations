@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {View, Text, TouchableOpacity, Image} from 'react-native'
 import Input from '../components/Input'
+import ImagePicker from '../components/ImagePicker'
 import {addPlace} from '../ducks/places'
 
 import styles from '../constants/styles'
@@ -40,7 +41,7 @@ const NewPlace = ({navigation}) => {
           onBlur={handleBlur}
           placeholder='Enter a place title'
         />
-
+        <ImagePicker />
         <TouchableOpacity
           onPress={savePlaceHandler}
           style={styles.defaultButton}

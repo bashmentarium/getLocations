@@ -10,7 +10,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   defaultButton: {
-    width: '60%',
+    width: 230,
     height: 40,
     backgroundColor: colors.white,
     borderRadius: 3,
@@ -21,6 +21,7 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0.18,
     shadowRadius: 1.0,
+    elevation: 1,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
@@ -148,5 +149,43 @@ export default StyleSheet.create({
     color: '#666',
     fontSize: 16,
     fontFamily: 'light',
+  },
+  imagePicker: {
+    width: 230,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    height: 200,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderRadius: 3,
+    borderColor: colors.contrast,
+  },
+  cameraButton: {
+    width: 50,
+    height: 50,
+    backgroundColor: colors.white,
+    borderRadius: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.0,
+    elevation: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    marginTop: 10,
+    flexDirection: 'row',
+  },
+  cameraButtonImage: {
+    width: 35,
+    height: 25,
+  },
+  imagePreview: {
+    width: '90%',
+    height: '50%',
   },
 })
