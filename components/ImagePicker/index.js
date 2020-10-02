@@ -7,7 +7,7 @@ import {camera} from '../../assets/images/png'
 
 import styles from '../../constants/styles'
 
-const ImagePicker = () => {
+const ImagePicker = ({onImageTaken}) => {
   const [pickedImage, setPickedImage] = useState()
 
   const verifyPermissions = async () => {
@@ -38,6 +38,7 @@ const ImagePicker = () => {
     })
 
     setPickedImage(image.uri)
+    onImageTaken(image.uri)
   }
 
   return (

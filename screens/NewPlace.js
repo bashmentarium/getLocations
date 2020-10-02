@@ -12,6 +12,7 @@ const logo = require('../assets/images/png/logo.png')
 const NewPlace = ({navigation}) => {
   const [titleValue, setTitleValue] = useState('')
   const [focused, setFocused] = useState(false)
+  const [selectedImage, setSelectedImage] = useState(null)
   const dispatch = useDispatch()
 
   const titleChangeHandler = (text) => {
@@ -19,7 +20,7 @@ const NewPlace = ({navigation}) => {
   }
 
   const savePlaceHandler = () => {
-    dispatch(addPlace(titleValue))
+    dispatch(addPlace(titleValue, selectedImage))
     navigation.navigate('Places')
   }
 
@@ -29,6 +30,10 @@ const NewPlace = ({navigation}) => {
 
   const handleBlur = () => {
     setFocused(false)
+  }
+
+  const imageTakenHandler = (imagePath) => {
+    setSelectedImage(imagePath)
   }
 
   return (
@@ -41,7 +46,7 @@ const NewPlace = ({navigation}) => {
           onBlur={handleBlur}
           placeholder='Enter a place title'
         />
-        <ImagePicker />
+        <ImagePicker onImageTaken={imageTakenHandler} />
         <TouchableOpacity
           onPress={savePlaceHandler}
           style={styles.defaultButton}

@@ -20,6 +20,7 @@ import MapScreen from './screens/MapScreen'
 import TabBarIcon from './components/TabBarIcon'
 import NavigationService from './utils/navigationService'
 import store from './store'
+import {init} from './utils/db'
 
 import colors from './constants/colors'
 
@@ -36,6 +37,14 @@ i18n.translations = {
   en: getLocaleMessages('en'),
 }
 i18n.locale = 'en'
+
+init()
+  .then(() => {
+    console.log('Initialized database')
+  })
+  .catch((err) => {
+    console.log('Initializing db failed', err)
+  })
 
 export const switchNavigator = createSwitchNavigator({
   //Startup Screen

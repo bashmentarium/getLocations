@@ -186,6 +186,6 @@ export default StyleSheet.create({
   },
   imagePreview: {
     width: '90%',
-    height: '50%',
+    height: '60%',
   },
 })
