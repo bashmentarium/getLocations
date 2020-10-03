@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {View, Text, TouchableOpacity, Image} from 'react-native'
+import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native'
 import Input from '../components/Input'
 import ImagePicker from '../components/ImagePicker'
 import LocationPicker from '../components/LocationPicker'
@@ -38,7 +38,10 @@ const NewPlace = ({navigation}) => {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.scrollContainer}
+      contentContainerStyle={{alignItems: 'center', justifyContent: 'center'}}
+    >
       <View style={styles.form}>
         <Input
           onChangeText={titleChangeHandler}
@@ -48,7 +51,7 @@ const NewPlace = ({navigation}) => {
           placeholder='Enter a place title'
         />
         <ImagePicker onImageTaken={imageTakenHandler} />
-        <LocationPicker />
+        <LocationPicker navigation={navigation} />
         <TouchableOpacity
           onPress={savePlaceHandler}
           style={styles.defaultButton}
@@ -56,7 +59,7 @@ const NewPlace = ({navigation}) => {
           <Text style={styles.buttonText}>Save Place</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 

@@ -9,6 +9,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  scrollContainer: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
   defaultButton: {
     width: 230,
     height: 40,
@@ -202,5 +206,15 @@ export default StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  mapScreen: {
+    flex: 1,
+  },
+  headerButton: {
+    width: 50,
+  },
+  headerButtonText: {
+    fontSize: 16,
+    fontFamily: 'regular',
   },
 })

@@ -8,10 +8,11 @@ import {
 } from 'react-native'
 import * as Location from 'expo-location'
 import * as Permissions from 'expo-permissions'
+import MapPreview from '../MapPreview'
 
 import styles from '../../constants/styles'
 
-const LocationPicker = () => {
+const LocationPicker = ({navigation}) => {
   const [isFetching, setIsFetching] = useState(false)
   const [pickedLocation, setPickedLocation] = useState()
   const verifyPermissions = async () => {
@@ -48,21 +49,34 @@ const LocationPicker = () => {
     }
     setIsFetching(false)
   }
+
+  const pickOnMapHandler = () => {
+    navigation.navigate('Map')
+  }
+
   return (
     <View style={styles.locationPicker}>
-      <View style={styles.mapPreview}>
+      <MapPreview location={pickedLocation} onPress={pickOnMapHandler}>
         {isFetching ? (
           <ActivityIndicator size='large' color='#ccc' />
         ) : (
           <Text style={styles.address}>Location not chosen yet</Text>
         )}
+      </MapPreview>
+      <View>
+        <TouchableOpacity
+          onPress={getLocationHandler}
+          style={styles.defaultButton}
+        >
+          <Text style={styles.buttonTextLight}>Get user location</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={pickOnMapHandler}
+          style={styles.defaultButton}
+        >
+          <Text style={styles.buttonTextLight}>Pick on map</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        onPress={getLocationHandler}
-        style={styles.defaultButton}
-      >
-        <Text style={styles.buttonTextLight}>Get user location</Text>
-      </TouchableOpacity>
     </View>
   )
 }
