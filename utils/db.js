@@ -2,6 +2,11 @@ import * as SQLite from 'expo-sqlite'
 
 const db = SQLite.openDatabase('places.db')
 
+/**
+ * @method init
+ * @description A function that initializes the SQLite database
+ * @returns {any[]} Promise
+ */
 export const init = () => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
@@ -20,6 +25,17 @@ export const init = () => {
   return promise
 }
 
+/**
+ * @method insertPlace
+ * @description A function that saves a New Place record into the database,
+ * given the place properties as parameters
+ * @param {String} title
+ * @param {String} imageUri
+ * @param {String} address
+ * @param {Number} lat
+ * @param {Number} lng
+ * @returns {any[]} Promise
+ */
 export const insertPlace = (title, imageUri, address, lat, lng) => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
@@ -38,6 +54,11 @@ export const insertPlace = (title, imageUri, address, lat, lng) => {
   return promise
 }
 
+/**
+ * @method fetchPlaces
+ * @description A function that fetches all places saved in the database,
+ * @returns {any[]} Promise
+ */
 export const fetchPlaces = () => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
