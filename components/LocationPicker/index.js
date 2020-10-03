@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {
   View,
   TouchableOpacity,
@@ -12,9 +12,20 @@ import MapPreview from '../MapPreview'
 
 import styles from '../../constants/styles'
 
-const LocationPicker = ({navigation}) => {
+const LocationPicker = (props) => {
   const [isFetching, setIsFetching] = useState(false)
   const [pickedLocation, setPickedLocation] = useState()
+
+  const {onLocationPicked, navigation} = props
+  const mapPickedLocation = navigation.getParam('pickedLocation')
+
+  useEffect(() => {
+    if (mapPickedLocation) {
+      setPickedLocation(mapPickedLocation)
+      onLocationPicked(mapPickedLocation)
+    }
+  }, [mapPickedLocation])
+
   const verifyPermissions = async () => {
     const result = await Permissions.askAsync(Permissions.LOCATION)
     if (result.status !== 'granted') {
@@ -38,6 +49,10 @@ const LocationPicker = ({navigation}) => {
       setIsFetching(true)
       const location = await Location.getCurrentPositionAsync({timeout: 5000})
       setPickedLocation({
+        lat: location.coords.latitude,
+        lng: location.coords.longitude,
+      })
+      props.onLocationPicked({
         lat: location.coords.latitude,
         lng: location.coords.longitude,
       })

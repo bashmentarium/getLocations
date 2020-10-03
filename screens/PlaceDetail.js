@@ -1,13 +1,42 @@
 import React from 'react'
 import {View, Text, TouchableOpacity, Image} from 'react-native'
 const logo = require('../assets/images/png/logo.png')
+import {useSelector} from 'react-redux'
+import MapPreview from '../components/MapPreview'
 
 import styles from '../constants/styles'
 
-const PlaceDetail = () => {
+const PlaceDetail = ({navigation}) => {
+  const placeId = navigation.getParam('placeId')
+  const selectedPlace = useSelector((state) =>
+    state.places.places.find((place) => place.id === placeId)
+  )
+
+  const selectedLocation = {lat: selectedPlace.lat, lng: selectedPlace.lng}
+
+  const showMapHandler = () => {
+    navigation.navigate('Map', {
+      readonly: true,
+      initialLocation: selectedLocation,
+    })
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Place Detail Screen</Text>
+    <View style={styles.placeDetail}>
+      <Image
+        source={{uri: selectedPlace.toString()}}
+        style={styles.placeImage}
+      />
+      <View style={styles.locationContainer}>
+        <View style={styles.addressContainer}>
+          <Text style={styles.address}>{selectedPlace.address}</Text>
+        </View>
+        <MapPreview
+          style={styles.mapPreviewDetail}
+          location={selectedLocation}
+          onPress={showMapHandler}
+        />
+      </View>
     </View>
   )
 }

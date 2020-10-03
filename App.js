@@ -168,7 +168,7 @@ export const switchNavigator = createSwitchNavigator({
       tabBarOptions: {
         style: {
           backgroundColor: colors.background,
-          height: 60,
+          height: 70,
           borderTopColor: 'transparent',
         },
         labelStyle: {

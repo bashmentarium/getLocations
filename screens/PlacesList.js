@@ -14,12 +14,13 @@ const PlacesList = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        {places.map(({title, id, imageUri}) => {
+        {places.map(({title, id, imageUri, address}) => {
           return (
             <PlaceItem
+              key={id}
               title={title}
               image={imageUri}
-              address={null}
+              address={address}
               onSelect={() => {
                 navigation.navigate('Detail', {
                   placeTitle: title,

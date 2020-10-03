@@ -1,21 +1,26 @@
 import React, {useState, useEffect, useCallback} from 'react'
-import {View, Text, TouchableOpacity, Image} from 'react-native'
+import {Text, TouchableOpacity, Image} from 'react-native'
 import MapView, {Marker} from 'react-native-maps'
-const logo = require('../assets/images/png/logo.png')
 
 import styles from '../constants/styles'
 
 const MapScreen = ({navigation}) => {
-  const [selectedLocation, setSelectedLocation] = useState()
+  const initialLocation = navigation.getParam('initialLocation')
+  const readonly = navigation.getParam('readonly')
+  const [selectedLocation, setSelectedLocation] = useState(initialLocation)
 
   const mapRegion = {
-    latitude: 37.78,
-    longitude: -122.43,
+    latitude: initialLocation ? initialLocation.lat : 37.78,
+    longitude: initialLocation ? initialLocation.lng : -122.43,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   }
 
   const selectLocationHandler = (event) => {
+    if (readonly) {
+      return
+    }
+
     setSelectedLocation({
       lat: event.nativeEvent.coordinate.latitude,
       lng: event.nativeEvent.coordinate.longitude,
@@ -59,6 +64,16 @@ const MapScreen = ({navigation}) => {
 
 MapScreen.navigationOptions = ({navigation}) => {
   const saveFn = navigation.getParam('saveLocation')
+  const readonly = navigation.getParam('readonly')
+  if (readonly) {
+    return {
+      headerTitleStyle: {
+        fontFamily: 'regular',
+        fontSize: 19,
+      },
+    }
+  }
+
   return {
     headerTitleStyle: {
       fontFamily: 'regular',

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useCallback} from 'react'
 import {useDispatch} from 'react-redux'
 import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native'
 import Input from '../components/Input'
@@ -14,6 +14,7 @@ const NewPlace = ({navigation}) => {
   const [titleValue, setTitleValue] = useState('')
   const [focused, setFocused] = useState(false)
   const [selectedImage, setSelectedImage] = useState(null)
+  const [selectedLocation, setSelectedLocation] = useState()
   const dispatch = useDispatch()
 
   const titleChangeHandler = (text) => {
@@ -21,7 +22,7 @@ const NewPlace = ({navigation}) => {
   }
 
   const savePlaceHandler = () => {
-    dispatch(addPlace(titleValue, selectedImage))
+    dispatch(addPlace(titleValue, selectedImage, selectedLocation))
     navigation.navigate('Places')
   }
 
@@ -32,6 +33,10 @@ const NewPlace = ({navigation}) => {
   const handleBlur = () => {
     setFocused(false)
   }
+
+  const locationPickedHandler = useCallback((location) => {
+    setSelectedLocation(location)
+  }, [])
 
   const imageTakenHandler = (imagePath) => {
     setSelectedImage(imagePath)
@@ -51,7 +56,10 @@ const NewPlace = ({navigation}) => {
           placeholder='Enter a place title'
         />
         <ImagePicker onImageTaken={imageTakenHandler} />
-        <LocationPicker navigation={navigation} />
+        <LocationPicker
+          navigation={navigation}
+          onLocationPicked={locationPickedHandler}
+        />
         <TouchableOpacity
           onPress={savePlaceHandler}
           style={styles.defaultButton}

@@ -217,4 +217,36 @@ export default StyleSheet.create({
     fontSize: 16,
     fontFamily: 'regular',
   },
+  locationContainer: {
+    height: 250,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.0,
+    elevation: 2,
+    backgroundColor: 'white',
+    borderRadius: 4,
+  },
+  addressContainer: {
+    padding: 20,
+  },
+  mapPreviewDetail: {
+    width: '100%',
+    maxWidth: 350,
+    height: 300,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  placeDetail: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.background,
+    marginTop: 0,
+  },
 })
