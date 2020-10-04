@@ -8,8 +8,7 @@ function setTopLevelNavigator(navigatorRef) {
 
 /**
  * @method navigate
- * @description A function that navigates to the screen specified
- * in the route parameter, as well as pass data along through params parameter.
+ * @description Navigates to the screen specified in the route parameter, as well as passes data along through params parameter.
  * @param {String} routeName
  * @param {any[]} params
  */

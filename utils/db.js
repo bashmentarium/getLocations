@@ -4,7 +4,7 @@ const db = SQLite.openDatabase('places.db')
 
 /**
  * @method init
- * @description A function that initializes the SQLite database
+ * @description Initializes the SQLite database
  * @returns {any[]} Promise
  */
 export const init = () => {
@@ -27,7 +27,7 @@ export const init = () => {
 
 /**
  * @method insertPlace
- * @description A function that saves a New Place record into the database,
+ * @description Saves a New Place record into the database,
  * given the place properties as parameters
  * @param {String} title
  * @param {String} imageUri
@@ -56,7 +56,7 @@ export const insertPlace = (title, imageUri, address, lat, lng) => {
 
 /**
  * @method fetchPlaces
- * @description A function that fetches all places saved in the database,
+ * @description Fetches all places saved in the database,
  * @returns {any[]} Promise
  */
 export const fetchPlaces = () => {

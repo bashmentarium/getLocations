@@ -1,5 +1,5 @@
 node_modules
-utils
+apiKey.js
 .expo
 npm-debug.*
 *.jks
