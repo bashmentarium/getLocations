@@ -1,8 +1,14 @@
-# Maps and Camera
+# Locations
+App that uses the native mobile Camera, Maps, SQLite database and location modules.
 
-App that uses the native mobile Camera and Maps mobile modules.
-
-The data is being saved in the SQLite native module provided by Expo.
+This app allows you to:
+- take a picture using your device's native camera.
+- edit the taken picture before it is saved.
+- select a location on the map (provided by the Google Maps API)
+- bind a location to a taken picture.
+- save a location into a SQLite database stored on the device's memory.
+- preview the list of previously saved locations.
+- access previously saved locations details info.
 
 # Demo
 ![](Demo.gif)
