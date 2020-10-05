@@ -1,5 +1,5 @@
 # Locations
-//Image
+![](Image.png)
 Your pictures, exactly as you took it, only for your eyes to see.
 
 Locations is a privacy-focused camera app.
